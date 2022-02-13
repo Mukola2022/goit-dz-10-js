@@ -52,6 +52,10 @@
       return `<li style = "border: 1px solid blue; border-radius: 4px; background-color: yellow; margin-bottom: 5px; width: 300px;"><p style="padding-bottom: 10px;"><b><img src=${names.flags.svg} width="30" height="30" style="margin: 3px;">${names.name}</b></p></li>`;
       
     }).join("");
+    if (name.length >= 10 && searchBox.value.length === 1) {
+      Notiflix.Notify.info('Пожалуйста, введите более конкретное имя.');
+      return;
+     } 
      
     ulCountry.innerHTML = markup;
      
@@ -61,20 +65,17 @@
       
       return `<p><b>Capital: ${elem.capital}</b></p>
               <p><b>Population: ${elem.population}</b></p>
-              <p><b>Languages: ${elem.languages[0].name}</b></p>`
+              <p><b>Languages: ${elem.languages.map(el =>  el.name)}</b></p>`
       
     }).join('');
   
     divInfo.innerHTML = markups;
-  }
-
-   if (name.length >= 10) {
-      Notiflix.Notify.info('Пожалуйста, введите более конкретное имя.');
-     }
-
-     
+  }    
+  
     
   }
+
+   
  
  
 
